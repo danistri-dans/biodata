@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danis Tri Yudha Tama — Digital Diary &amp; Portfolio</title>
+<meta name="description" content="Digital diary sekaligus portfolio personal Danis Tri Yudha  — pelajar SMK yang sedang belajar web development &amp; AI. Lihat proyek, skill, timeline, dan cerita perjalanan belajarnya.">
+<meta name="keywords" content="Danis Tri Yudha T, portfolio pelajar, digital diary, web developer pemula, AI enthusiast, portfolio SMK">
+<meta name="author" content="Danis Tri Yudha">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FAF6EF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Danis Tri Yudha T — Digital Diary &amp; Portfolio">
+<meta property="og:description" content="Buku harian digital & portfolio personal — proyek, skill, dan perjalanan belajar coding & AI.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%96%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EF;
+    --paper-warm:#F2EBDC;
+    --card:#FFFDF9;
+    --ink:#38352E;
+    --ink-soft:#79735F;
+    --ink-faint:#AFA692;
+    --sage:#9FBBA6;
+    --sage-deep:#6E9680;
+    --dusty:#8FA7BC;
+    --dusty-deep:#5F7C93;
+    --clay:#C99977;
+    --clay-deep:#AD7B58;
+    --line:#E6DBC6;
+    --gold:#DCB975;
+    --shadow: 0 10px 30px -12px rgba(56,53,46,0.15);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    transition:background-color .4s ease, color .4s ease;
+  }
+
+  ::selection{background:var(--sage); color:#fff;}
+
+  a{color:inherit; text-decoration:none;}
+
+  .display{font-family:'Bricolage Grotesque', 'Plus Jakarta Sans', sans-serif; font-weight:700;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    display:inline-flex;
+    align-items:center;
+    gap:0.5em;
+  }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 clamp(20px, 5vw, 64px);
+  }
+
+  section{position:relative; padding:120px 0;}
+
+  /* ---------- Paper texture ---------- */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.5;
+    background-image:radial-gradient(circle at 1px 1px, rgba(56,53,46,0.05) 1px, transparent 0);
+    background-size:26px 26px;
+    transition:opacity .4s ease;
+  }
+
+  /* ---------- Diary Tab Navigation (signature element) ---------- */
+  .diary-tabs{
+    position:fixed;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:200;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-height:88vh;
+    overflow-y:auto;
+    scrollbar-width:none;
+  }
+  .diary-tabs::-webkit-scrollbar{display:none;}
+
+  .diary-tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-right:none;
+    padding:9px 8px 9px 12px;
+    border-radius:10px 0 0 10px;
+    writing-mode:vertical-rl;
+    cursor:pointer;
+    transform:translateX(28px);
+    transition:transform 0.35s ease, color 0.3s ease, background 0.3s ease, box-shadow .3s ease;
+    box-shadow:-4px 4px 12px -6px rgba(56,53,46,0.12);
+  }
+
+  .diary-tab:hover, .diary-tab:focus-visible{
+    transform:translateX(0);
+    color:var(--card);
+    background:var(--sage-deep);
+    outline:none;
+  }
+
+  .diary-tab.active{
+    transform:translateX(0);
+    color:var(--card);
+    background:var(--clay-deep);
+  }
+
+  @media (max-width: 780px){
+    .diary-tabs{display:none;}
+  }
+
+  /* ---------- Decorative blobs ---------- */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.5;
+    z-index:0;
+    animation:float 14s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(18px,-22px) scale(1.06);}
+  }
+
+  .particle{
+    position:absolute;
+    border-radius:50%;
+    background:var(--ink-faint);
+    opacity:0.35;
+    animation:drift 9s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-16px);}
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .hero .blob:nth-child(1){width:340px;height:340px; background:var(--sage); top:8%; left:-8%;}
+  .hero .blob:nth-child(2){width:280px;height:280px; background:var(--dusty); bottom:6%; right:-6%; animation-delay:2s;}
+  .hero .blob:nth-child(3){width:180px;height:180px; background:var(--clay); top:52%; left:44%; opacity:0.28; animation-delay:4s;}
+
+  .hero-inner{
+    position:relative;
+    z-index:1;
+    width:100%;
+    text-align:center;
+  }
+
+  .hero-stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:28px;
+    padding:7px 16px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+  }
+  .hero-stamp .dot{width:6px;height:6px;border-radius:50%;background:var(--sage-deep); animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.4;} 50%{opacity:1;}}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 6rem);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--clay-deep);
+  }
+
+  .hero-tagline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:clamp(0.85rem, 2vw, 1.05rem);
+    color:var(--sage-deep);
+    letter-spacing:0.04em;
+    margin-bottom:26px;
+  }
+  .hero-tagline .sep{color:var(--ink-faint); margin:0 10px;}
+
+  .hero-copy{
+    max-width:560px;
+    margin:0 auto 34px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    border-radius:999px;
+    font-size:0.92rem;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+    box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{background:var(--sage-deep);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--ink); background:var(--card);}
+
+  .scroll-cue{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    opacity:0;
+    animation: fadeInOnly 0.8s ease forwards;
+    animation-delay:1.7s;
+  }
+  .scroll-cue::after{
+    content:"";
+    width:1px; height:34px;
+    background:linear-gradient(var(--ink-faint), transparent);
+    animation:scrollline 2s ease-in-out infinite;
+  }
+  @keyframes scrollline{0%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 51%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;}}
+
+  /* ================= SECTION HEADERS ================= */
+  .sec-head{
+    margin-bottom:56px;
+    position:relative;
+    z-index:1;
+  }
+  .sec-head .eyebrow{margin-bottom:14px;}
+  .sec-head h2{
+    font-size:clamp(1.9rem, 4vw, 3rem);
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .sec-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    max-width:520px;
+    font-size:1rem;
+  }
+  .date-stamp{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--ink-faint);
+    margin-top:8px;
+    display:block;
+  }
+
+  /* ================= CURRENTLY LIVING ================= */
+  .living{background:var(--paper-warm); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  .living-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:20px;
+    position:relative;
+    z-index:1;
+  }
+
+  .living-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:26px 22px;
+    box-shadow:var(--shadow);
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+    opacity:0;
+    transform:translateY(24px);
+  }
+  .living-card.in{opacity:1; transform:translateY(0);}
+  .living-card:hover{transform:translateY(-6px); box-shadow:0 18px 34px -14px rgba(56,53,46,0.22);}
+
+  .living-icon{font-size:1.6rem; margin-bottom:14px; display:block;}
+  .living-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:8px;
+    display:block;
+  }
+  .living-text{font-size:0.98rem; color:var(--ink); font-weight:500;}
+
+  /* ================= PROJECTS ================= */
+  .journey{
+    position:relative;
+    z-index:1;
+  }
+  .journey-line{
+    position:absolute;
+    left:19px;
+    top:8px;
+    bottom:8px;
+    width:1px;
+    background:linear-gradient(var(--line), var(--line) 70%, transparent);
+  }
+  @media(max-width:640px){.journey-line{left:11px;}}
+
+  .project{
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:24px;
+    padding-bottom:52px;
+    position:relative;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .project.in{opacity:1; transform:translateY(0);}
+  .project:last-child{padding-bottom:0;}
+
+  @media(max-width:640px){.project{grid-template-columns:24px 1fr; gap:16px;}}
+
+  .project-node{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--card);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--sage-deep);
+    z-index:1;
+    box-shadow:var(--shadow);
+  }
+  @media(max-width:640px){.project-node{width:24px;height:24px; font-size:0;}}
+
+  .project-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:28px 30px;
+    box-shadow:var(--shadow);
+  }
+
+  .project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+
+  .project-title{font-size:1.3rem; font-weight:500;}
+
+  .status-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .status-done{background:rgba(159,187,166,0.22); color:var(--sage-deep); border-color:rgba(159,187,166,0.5);}
+  .status-progress{background:rgba(143,167,188,0.2); color:var(--dusty-deep); border-color:rgba(143,167,188,0.5);}
+  .status-early{background:rgba(201,153,119,0.2); color:var(--clay-deep); border-color:rgba(201,153,119,0.5);}
+  .status-planned{background:rgba(56,53,46,0.06); color:var(--ink-soft); border-color:var(--line);}
+
+  .project-desc{color:var(--ink-soft); font-size:0.96rem; margin-bottom:20px;}
+
+  .progress-track{
+    height:6px;
+    background:var(--paper-warm);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--sage), var(--dusty));
+    width:0%;
+    transition:width 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .progress-pct{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    color:var(--ink-faint);
+    margin-top:8px;
+    display:block;
+  }
+
+  /* ================= GALLERY (moment categories, 5 photos each) ================= */
+  .gallery{background:var(--paper-warm); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  .moment-tabs{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-bottom:28px;
+    position:relative; z-index:1;
+  }
+  .moment-tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    padding:10px 18px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .moment-tab:hover{border-color:var(--sage-deep); color:var(--ink); transform:translateY(-2px);}
+  .moment-tab.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+  .moment-panels{
+    position:relative; z-index:1;
+    opacity:0; transform:translateY(20px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .moment-panels.in{opacity:1; transform:translateY(0);}
+
+  .moment-grid{
+    display:none;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:120px;
+    gap:10px;
+  }
+  .moment-grid.active{display:grid; animation:momentFade .5s ease;}
+  @keyframes momentFade{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+
+  .moment-photo{
+    position:relative;
+    border:none; padding:0; margin:0;
+    border-radius:var(--radius-sm);
+    overflow:hidden;
+    cursor:zoom-in;
+    box-shadow:var(--shadow);
+    background:var(--card);
+  }
+  .moment-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .moment-photo:hover img{transform:scale(1.06);}
+  .moment-photo.no-image img{display:none;}
+
+  .moment-photo:nth-child(1){grid-column:1 / 3; grid-row:1 / 3;}
+  .moment-photo:nth-child(2){grid-column:3 / 4; grid-row:1 / 2;}
+  .moment-photo:nth-child(3){grid-column:4 / 5; grid-row:1 / 2;}
+  .moment-photo:nth-child(4){grid-column:3 / 4; grid-row:2 / 3;}
+  .moment-photo:nth-child(5){grid-column:4 / 5; grid-row:2 / 3;}
+
+  @media(max-width:640px){
+    .moment-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:105px;}
+    .moment-photo:nth-child(1){grid-column:1 / 3; grid-row:1 / 3;}
+    .moment-photo:nth-child(2){grid-column:1 / 2; grid-row:3 / 4;}
+    .moment-photo:nth-child(3){grid-column:2 / 3; grid-row:3 / 4;}
+    .moment-photo:nth-child(4){grid-column:1 / 2; grid-row:4 / 5;}
+    .moment-photo:nth-child(5){grid-column:2 / 3; grid-row:4 / 5;}
+  }
+
+  /* shared photo-missing fallback (also used by About Me photo) */
+  .acc-fallback{
+    display:none;
+    position:absolute; inset:0;
+    flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:8px;
+    color:var(--ink-faint);
+  }
+  .no-image .acc-fallback{display:flex;}
+  .acc-fallback-icon{font-size:1.8rem; opacity:0.7;}
+  .acc-fallback-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+
+  /* ================= LIGHTBOX ================= */
+  .lightbox-overlay{
+    position:fixed; inset:0; z-index:500;
+    background:rgba(20,18,14,0.94);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  .lightbox-overlay.open{opacity:1; pointer-events:auto;}
+  .lightbox-stage{max-width:min(88vw, 820px); max-height:82vh; text-align:center;}
+  .lightbox-stage img{max-width:100%; max-height:76vh; border-radius:var(--radius-sm); box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);}
+  .lightbox-caption{display:block; margin-top:14px; color:#fff; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; opacity:0.85;}
+  .lightbox-close, .lightbox-prev, .lightbox-next{
+    position:fixed;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s ease;
+  }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover{background:rgba(255,255,255,0.22);}
+  .lightbox-close{top:24px; right:24px; width:44px; height:44px; font-size:1rem;}
+  .lightbox-prev, .lightbox-next{top:50%; transform:translateY(-50%); width:48px; height:48px; font-size:1.3rem;}
+  .lightbox-prev{left:20px;}
+  .lightbox-next{right:20px;}
+  @media(max-width:640px){
+    .lightbox-close{top:14px; right:14px; width:38px; height:38px;}
+    .lightbox-prev, .lightbox-next{width:40px; height:40px; font-size:1.1rem;}
+    .lightbox-prev{left:8px;} .lightbox-next{right:8px;}
+  }
+
+  /* ================= GOALS TIMELINE ================= */
+  .goals-list{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+  }
+  .goal{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    opacity:0;
+    transform:translateX(-16px);
+    transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .goal.in{opacity:1; transform:translateX(0);}
+  .goal:last-child{border-bottom:none;}
+
+  .goal-check{
+    width:26px;height:26px;
+    border-radius:50%;
+    border:1.5px solid var(--line);
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:2px;
+    font-size:0.75rem;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  .goal.done .goal-check{background:var(--sage-deep); border-color:var(--sage-deep); color:#fff;}
+  .goal.current .goal-check{border-color:var(--dusty-deep); color:var(--dusty-deep);}
+  .goal.upcoming .goal-check{color:var(--ink-faint);}
+
+  .goal-title{font-weight:600; font-size:1.02rem; margin-bottom:4px;}
+  .goal.done .goal-title{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--ink-faint); text-decoration-thickness:1px;}
+  .goal-sub{font-size:0.88rem; color:var(--ink-soft);}
+  .goal-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+    margin-top:6px;
+    display:inline-block;
+  }
+
+  /* ================= CLOSING ================= */
+  .closing{
+    text-align:center;
+    padding-bottom:160px;
+  }
+  .closing-inner{
+    max-width:600px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+  .closing p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(1.2rem, 3vw, 1.6rem);
+    line-height:1.6;
+    color:var(--ink);
+    margin-bottom:32px;
+  }
+  .closing-sign{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--clay-deep);
+    margin-bottom:10px;
+  }
+  .closing-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-faint);
+    letter-spacing:0.06em;
+  }
+
+  footer{
+    text-align:center;
+    padding:32px 0 48px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--ink-faint);
+    position:relative;
+    z-index:1;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--dusty-deep);
+    outline-offset:3px;
+  }
+
+  @media(max-width:640px){
+    section{padding:88px 0;}
+    .hero{padding-top:60px;}
+  }
+
+  /* ================= HERO LOAD-IN ANIMATION (cinematic stagger) ================= */
+  .hero-stamp, .hero-copy{
+    opacity:0;
+    animation: riseIn 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .hero-stamp{animation-delay:.15s;}
+  .hero-copy{animation-delay:1.12s;}
+  @keyframes riseIn{
+    from{opacity:0; filter:blur(6px); transform:translateY(20px);}
+    to{opacity:1; filter:blur(0); transform:translateY(0);}
+  }
+
+  /* name reveal, word by word with blur-focus pull */
+  .hero h1 .reveal-word{
+    display:inline-block;
+    opacity:0;
+    filter:blur(10px);
+    transform:translateY(30px) scale(0.92);
+    animation: wordIn 0.85s cubic-bezier(.16,.84,.32,1) forwards;
+  }
+  .hero h1 span.reveal-word{animation-delay:.38s;}
+  .hero h1 em.reveal-word{animation-delay:.56s;}
+
+  /* tagline reveal, one role at a time */
+  .hero-tagline .reveal-word{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(14px);
+    animation: wordIn 0.6s cubic-bezier(.16,.84,.32,1) forwards;
+  }
+  .hero-tagline .reveal-word:nth-child(1){animation-delay:.8s;}
+  .hero-tagline .reveal-word:nth-child(3){animation-delay:.92s;}
+  .hero-tagline .reveal-word:nth-child(5){animation-delay:1.04s;}
+  .hero-tagline .sep{opacity:0; animation: fadeInOnly .4s ease forwards;}
+  .hero-tagline .sep:nth-child(2){animation-delay:.88s;}
+  .hero-tagline .sep:nth-child(4){animation-delay:1s;}
+
+  @keyframes wordIn{
+    to{opacity:1; filter:blur(0); transform:translateY(0) scale(1);}
+  }
+  @keyframes fadeInOnly{to{opacity:1;}}
+
+  /* buttons pop in with a soft bounce */
+  .hero-actions .btn{
+    opacity:0;
+    transform:scale(0.75) translateY(16px);
+    animation: btnPop 0.65s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  .hero-actions .btn:nth-child(1){animation-delay:1.32s;}
+  .hero-actions .btn:nth-child(2){animation-delay:1.44s;}
+  @keyframes btnPop{
+    to{opacity:1; transform:scale(1) translateY(0);}
+  }
+
+  /* stagger reveal for grids */
+  .living-grid .living-card:nth-child(1){transition-delay:0s;}
+  .living-grid .living-card:nth-child(2){transition-delay:.08s;}
+  .living-grid .living-card:nth-child(3){transition-delay:.16s;}
+  .living-grid .living-card:nth-child(4){transition-delay:.24s;}
+  .living-grid .living-card:nth-child(5){transition-delay:.32s;}
+
+  .goals-list .goal:nth-child(1){transition-delay:0s;}
+  .goals-list .goal:nth-child(2){transition-delay:.07s;}
+  .goals-list .goal:nth-child(3){transition-delay:.14s;}
+  .goals-list .goal:nth-child(4){transition-delay:.21s;}
+  .goals-list .goal:nth-child(5){transition-delay:.28s;}
+
+  /* ================= SCROLL PROGRESS BAR ================= */
+  .progress-bar{
+    position:fixed; top:0; left:0; width:100%; height:3px;
+    background:transparent; z-index:210;
+  }
+  .progress-bar-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--sage-deep), var(--dusty-deep), var(--clay-deep));
+    transition:width .1s linear;
+  }
+
+  /* ================= DASHBOARD MENU ================= */
+  .dash-toggle{
+    position:fixed;
+    right:24px; bottom:24px;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem;
+    cursor:pointer;
+    z-index:250;
+    box-shadow:0 12px 26px -10px rgba(56,53,46,0.4);
+    transition:transform .3s ease, background .3s ease, rotate .35s ease;
+  }
+  .dash-toggle:hover{background:var(--clay-deep); transform:scale(1.06);}
+  .dash-toggle.active{background:var(--clay-deep); rotate:135deg;}
+
+  .dash-overlay{
+    position:fixed; inset:0;
+    background:rgba(56,53,46,0.32);
+    backdrop-filter:blur(2px);
+    opacity:0; pointer-events:none;
+    transition:opacity .35s ease;
+    z-index:240;
+  }
+  .dash-overlay.open{opacity:1; pointer-events:auto;}
+
+  .dash-panel{
+    position:fixed; top:0; right:0;
+    height:100dvh;
+    width:min(340px, 86vw);
+    background:var(--card);
+    border-left:1px solid var(--line);
+    box-shadow:-16px 0 40px -18px rgba(56,53,46,0.35);
+    transform:translateX(100%);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1);
+    z-index:245;
+    padding:28px 26px;
+    display:flex; flex-direction:column;
+  }
+  .dash-panel.open{transform:translateX(0);}
+
+  .dash-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:20px;
+  }
+  .dash-eyebrow{font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint);}
+  .dash-close{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--line); background:transparent;
+    color:var(--ink); cursor:pointer; font-size:0.85rem;
+    transition:background .25s ease, color .25s ease;
+  }
+  .dash-close:hover{background:var(--ink); color:var(--paper);}
+
+  .dash-nav{display:flex; flex-direction:column; margin-bottom:auto; overflow-y:auto; padding-right:4px;}
+  .dash-link{
+    display:flex; align-items:baseline; gap:14px;
+    padding:11px 4px;
+    font-size:0.98rem;
+    font-weight:500;
+    border-bottom:1px solid var(--line);
+    color:var(--ink);
+    opacity:0; transform:translateX(14px);
+    transition:opacity .5s ease, transform .5s ease, color .25s ease, padding-left .25s ease;
+  }
+  .dash-panel.open .dash-link{opacity:1; transform:translateX(0);}
+  .dash-panel.open .dash-link:nth-child(1){transition-delay:.05s;}
+  .dash-panel.open .dash-link:nth-child(2){transition-delay:.08s;}
+  .dash-panel.open .dash-link:nth-child(3){transition-delay:.11s;}
+  .dash-panel.open .dash-link:nth-child(4){transition-delay:.14s;}
+  .dash-panel.open .dash-link:nth-child(5){transition-delay:.17s;}
+  .dash-panel.open .dash-link:nth-child(6){transition-delay:.20s;}
+  .dash-panel.open .dash-link:nth-child(7){transition-delay:.23s;}
+  .dash-panel.open .dash-link:nth-child(8){transition-delay:.26s;}
+  .dash-panel.open .dash-link:nth-child(9){transition-delay:.29s;}
+  .dash-panel.open .dash-link:nth-child(10){transition-delay:.32s;}
+  .dash-panel.open .dash-link:nth-child(11){transition-delay:.35s;}
+  .dash-panel.open .dash-link:nth-child(12){transition-delay:.38s;}
+  .dash-panel.open .dash-link:nth-child(13){transition-delay:.41s;}
+  .dash-panel.open .dash-link:nth-child(14){transition-delay:.44s;}
+  .dash-panel.open .dash-link:nth-child(15){transition-delay:.47s;}
+  .dash-panel.open .dash-link:nth-child(16){transition-delay:.50s;}
+  .dash-link:hover, .dash-link.active{color:var(--sage-deep); padding-left:10px;}
+  .dash-link-num{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--ink-faint);}
+
+  .dash-status{
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    display:flex; flex-direction:column; gap:10px;
+    flex-shrink:0;
+  }
+  .dash-status-label{font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint);}
+  .dash-status-row{font-size:0.86rem; color:var(--ink-soft); display:flex; gap:8px;}
+  .dash-progress-text{color:var(--sage-deep);}
+
+  @media(max-width:780px){
+    .dash-toggle{
+      right:auto; left:14px; top:14px; bottom:auto;
+      width:40px; height:40px; font-size:0.95rem;
+      box-shadow:var(--shadow);
+    }
+  }
+
+  /* ================= AI COMPANION WIDGET ================= */
+  .ai-toggle{
+    position:fixed;
+    left:24px; bottom:24px;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--sage-deep);
+    color:#fff;
+    border:none;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.35rem;
+    cursor:pointer;
+    z-index:250;
+    box-shadow:0 12px 26px -10px rgba(56,53,46,0.4);
+    transition:transform .3s ease, background .3s ease;
+  }
+  .ai-toggle:hover{background:var(--dusty-deep); transform:scale(1.06);}
+  .ai-toggle.active{background:var(--dusty-deep);}
+
+  .ai-panel{
+    position:fixed;
+    left:24px; bottom:92px;
+    width:min(340px, 88vw);
+    height:min(460px, 62vh);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    box-shadow:0 24px 50px -18px rgba(56,53,46,0.35);
+    z-index:249;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    opacity:0; transform:translateY(16px) scale(0.98);
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .ai-panel.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+
+  .ai-header{
+    padding:16px 18px;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--paper-warm);
+  }
+  .ai-header-title{font-size:0.92rem; font-weight:600;}
+  .ai-header-sub{font-family:'IBM Plex Mono', monospace; font-size:0.62rem; color:var(--ink-faint); letter-spacing:0.05em;}
+  .ai-header-close{
+    width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--line); background:transparent;
+    color:var(--ink); cursor:pointer; font-size:0.72rem;
+  }
+
+  .ai-messages{
+    flex:1;
+    overflow-y:auto;
+    padding:16px 18px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .ai-msg{
+    max-width:82%;
+    padding:10px 14px;
+    border-radius:14px;
+    font-size:0.88rem;
+    line-height:1.5;
+    animation:msgIn .35s ease;
+  }
+  @keyframes msgIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .ai-msg.assistant{
+    align-self:flex-start;
+    background:var(--paper-warm);
+    color:var(--ink);
+    border-bottom-left-radius:4px;
+  }
+  .ai-msg.user{
+    align-self:flex-end;
+    background:var(--sage-deep);
+    color:#fff;
+    border-bottom-right-radius:4px;
+  }
+  .ai-msg.error{
+    align-self:flex-start;
+    background:rgba(201,153,119,0.18);
+    color:var(--clay-deep);
+    border-bottom-left-radius:4px;
+  }
+
+  .ai-typing{
+    align-self:flex-start;
+    display:flex; gap:4px;
+    padding:12px 14px;
+    background:var(--paper-warm);
+    border-radius:14px;
+    border-bottom-left-radius:4px;
+  }
+  .ai-typing span{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--ink-faint);
+    animation:typingDot 1.2s ease-in-out infinite;
+  }
+  .ai-typing span:nth-child(2){animation-delay:.2s;}
+  .ai-typing span:nth-child(3){animation-delay:.4s;}
+  @keyframes typingDot{0%,60%,100%{opacity:0.3; transform:translateY(0);} 30%{opacity:1; transform:translateY(-3px);}}
+
+  .ai-input-row{
+    display:flex; gap:8px;
+    padding:14px;
+    border-top:1px solid var(--line);
+    background:var(--card);
+  }
+  .ai-input{
+    flex:1;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:10px 16px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:0.86rem;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .ai-input:focus{outline:2px solid var(--sage-deep); outline-offset:1px;}
+  .ai-send{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:none;
+    background:var(--ink);
+    color:var(--paper);
+    cursor:pointer;
+    font-size:0.9rem;
+    flex-shrink:0;
+    transition:background .25s ease;
+  }
+  .ai-send:hover{background:var(--sage-deep);}
+  .ai-send:disabled{opacity:0.5; cursor:not-allowed;}
+
+  @media(max-width:640px){
+    .ai-toggle{left:18px; bottom:18px; width:50px; height:50px; font-size:1.2rem;}
+    .ai-panel{left:12px; right:12px; width:auto; bottom:82px;}
+  }
+
+  /* ================= DARK MODE ================= */
+  [data-theme="dark"]{
+    --paper:#201D18;
+    --paper-warm:#27231C;
+    --card:#2C2820;
+    --ink:#EFE8D8;
+    --ink-soft:#B7AD97;
+    --ink-faint:#7C7360;
+    --line:#3B3529;
+    --shadow: 0 10px 30px -12px rgba(0,0,0,0.55);
+  }
+  [data-theme="dark"] body::before{opacity:0.22;}
+  [data-theme="dark"] .about-photo,
+  [data-theme="dark"] .p1,[data-theme="dark"] .p2,[data-theme="dark"] .p3,
+  [data-theme="dark"] .p4,[data-theme="dark"] .p5,[data-theme="dark"] .p6,
+  [data-theme="dark"] .portfolio-preview{filter:brightness(0.82) saturate(1.05);}
+
+  .theme-toggle{
+    position:fixed; top:22px; right:24px; z-index:250;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--card); border:1px solid var(--line); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:1.05rem; box-shadow:var(--shadow);
+    transition:transform .3s ease, background .3s ease, color .3s ease;
+  }
+  .theme-toggle:hover{transform:scale(1.08) rotate(14deg);}
+  @media(max-width:780px){.theme-toggle{top:14px; right:14px; width:40px;height:40px; font-size:0.95rem;}}
+
+  /* ================= LOADING SCREEN ================= */
+  .loading-screen{
+    position:fixed; inset:0; z-index:400; background:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  .loading-screen.done{opacity:0; visibility:hidden; pointer-events:none;}
+  .loading-mark{font-family:'Fraunces',serif; font-style:italic; font-size:1.7rem; color:var(--ink);}
+  .loading-bar{width:160px; height:2px; background:var(--line); overflow:hidden; border-radius:2px; position:relative;}
+  .loading-bar::after{content:""; position:absolute; left:0; top:0; display:block; width:40%; height:100%; background:var(--sage-deep); animation:loadSlide 1.1s ease-in-out infinite;}
+  @keyframes loadSlide{0%{transform:translateX(-100%);} 100%{transform:translateX(350%);}}
+  .loading-sub{font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint);}
+
+  /* ================= BACK TO TOP ================= */
+  .back-to-top{
+    position:fixed; right:24px; bottom:92px; width:44px;height:44px; border-radius:50%;
+    background:var(--card); border:1px solid var(--line); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem;
+    box-shadow:var(--shadow); z-index:248; opacity:0; transform:translateY(12px); pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease, background .3s ease, color .3s ease;
+  }
+  .back-to-top.show{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .back-to-top:hover{background:var(--ink); color:var(--paper);}
+  @media(max-width:640px){.back-to-top{right:18px; bottom:82px; width:40px;height:40px;}}
+
+  /* ---------- Pill Bottom Nav (mobile quick nav, icon + expanding label) ---------- */
+  .pill-nav{
+    position:fixed;
+    left:50%;
+    bottom:16px;
+    transform:translateX(-50%);
+    z-index:246;
+    display:flex;
+    align-items:center;
+    gap:2px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px;
+    box-shadow:0 14px 32px -12px rgba(56,53,46,0.28);
+  }
+  .pill-item{
+    --duration:480ms;
+    --cubic:cubic-bezier(.65,0,.35,1);
+    display:flex;
+    align-items:center;
+    height:40px;
+    padding:0 10px;
+    border-radius:999px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    color:var(--ink-soft);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    transition:background var(--duration) var(--cubic), color var(--duration) var(--cubic), padding var(--duration) var(--cubic);
+  }
+  .pill-item svg{width:19px;height:19px;flex-shrink:0; stroke:currentColor; fill:none; stroke-width:1.8; transition:transform var(--duration) var(--cubic);}
+  .pill-item__text{
+    max-width:0;
+    opacity:0;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    transform:translate3d(0,60%,0);
+    transition:max-width var(--duration) var(--cubic), opacity calc(var(--duration) / 1.6) var(--cubic), transform var(--duration) var(--cubic), margin-left var(--duration) var(--cubic);
+  }
+  .pill-item:hover{color:var(--sage-deep);}
+  .pill-item.active{background:var(--sage-deep); color:var(--paper); padding:0 16px 0 10px;}
+  .pill-item.active svg{transform:scale(1.08);}
+  .pill-item.active .pill-item__text{max-width:120px; opacity:1; margin-left:7px; transform:translate3d(0,0,0);}
+
+  @media(min-width:781px){.pill-nav{display:none;}}
+  @media(max-width:340px){.pill-item{padding:0 7px;} .pill-item.active{padding:0 12px 0 7px;}}
+
+  /* ================= ABOUT ME ================= */
+  .about-grid{display:grid; grid-template-columns:280px 1fr; gap:52px; align-items:start; position:relative; z-index:1;}
+  @media(max-width:780px){.about-grid{grid-template-columns:1fr; gap:36px;}}
+  .about-photo-wrap{position:sticky; top:100px;}
+  @media(max-width:780px){.about-photo-wrap{position:static;}}
+  .about-photo{
+    aspect-ratio:4/5; border-radius:var(--radius-lg); background:linear-gradient(155deg,#E9E1D0,#C7D9CC);
+    display:flex; align-items:center; justify-content:center; font-size:4.4rem; box-shadow:var(--shadow);
+    border:1px solid var(--line); overflow:hidden; position:relative; transition:filter .4s ease;
+  }
+  .about-photo img{width:100%;height:100%;object-fit:cover;}
+  .about-photo.no-image img{display:none;}
+  .about-photo-badge{
+    position:absolute; bottom:14px; left:14px; background:var(--card); border:1px solid var(--line);
+    padding:6px 12px; border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:.64rem; color:var(--sage-deep); box-shadow:var(--shadow);
+  }
+  .typed-wrap{font-family:'IBM Plex Mono',monospace; font-size:.9rem; color:var(--sage-deep); margin-bottom:18px; min-height:1.4em;}
+  .typed-cursor{display:inline-block; width:2px; height:1em; background:var(--sage-deep); margin-left:2px; vertical-align:middle; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .about-desc{font-size:1rem; color:var(--ink-soft); margin-bottom:26px;}
+  .about-motto{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.2rem; color:var(--clay-deep);
+    padding-left:18px; border-left:2px solid var(--clay); margin-bottom:32px;
+  }
+  .about-info-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:18px 24px; margin-bottom:32px; list-style:none;}
+  .about-info-item dt{font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;}
+  .about-info-item dd{font-size:.96rem; font-weight:600;}
+  .about-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* ================= SKILLS ================= */
+  .skills{background:var(--paper-warm); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px 40px; position:relative; z-index:1;}
+  .skill-row{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
+  .skill-row.in{opacity:1; transform:translateY(0);}
+  .skill-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px;}
+  .skill-name{font-weight:600; font-size:.96rem; display:flex; align-items:center; gap:8px;}
+  .skill-pct{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-faint);}
+  .skill-track{height:8px; background:var(--card); border:1px solid var(--line); border-radius:999px; overflow:hidden;}
+  .skill-fill{height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,var(--sage-deep),var(--dusty-deep)); transition:width 1.3s cubic-bezier(.2,.8,.2,1);}
+
+  /* ================= STATS ================= */
+  .stats{background:var(--ink); color:var(--paper); position:relative; overflow:hidden; transition:background-color .4s ease;}
+  .stats .eyebrow{color:var(--gold);}
+  .stats .sec-head p{color:rgba(250,246,239,0.65);}
+  .stats-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:22px; position:relative; z-index:1;}
+  .stat-card{
+    text-align:center; padding:30px 14px; border:1px solid rgba(250,246,239,0.14); border-radius:var(--radius-md);
+    background:rgba(250,246,239,0.04); opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease;
+  }
+  .stat-card.in{opacity:1; transform:translateY(0);}
+  .stat-number{font-family:'Fraunces',serif; font-size:clamp(2rem,4vw,2.7rem); color:var(--gold); margin-bottom:6px;}
+  .stat-label{font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(250,246,239,0.6);}
+
+  /* ================= TECH STACK ================= */
+  .tech-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:16px; position:relative; z-index:1;}
+  .tech-item{
+    display:flex; flex-direction:column; align-items:center; gap:10px; padding:20px 8px;
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); box-shadow:var(--shadow);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease; opacity:0; transform:translateY(14px);
+  }
+  .tech-item.in{opacity:1; transform:translateY(0);}
+  .tech-item:hover{transform:translateY(-6px) scale(1.05); border-color:var(--sage-deep); box-shadow:0 16px 30px -14px rgba(56,53,46,0.28);}
+  .tech-item img{width:30px;height:30px;}
+  .tech-item span{font-family:'IBM Plex Mono',monospace; font-size:.64rem; color:var(--ink-soft); text-align:center;}
+
+  /* ================= PORTFOLIO ================= */
+  .p1{background:linear-gradient(150deg, #E9E1D0, #C7D9CC);}
+  .p2{background:linear-gradient(150deg, #DCE6EC, #B9CBDA);}
+  .p3{background:linear-gradient(150deg, #EFE2D3, #D9BFA3);}
+  .p4{background:linear-gradient(150deg, #E7EADD, #A9C4B0);}
+  .p5{background:linear-gradient(150deg, #E4DCE9, #C6C6DE);}
+  .p6{background:linear-gradient(150deg, #EEE6D6, #E0C79A);}
+  .portfolio-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; position:relative; z-index:1;}
+  .portfolio-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
+    box-shadow:var(--shadow); opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease, box-shadow .3s ease;
+    display:flex; flex-direction:column;
+  }
+  .portfolio-card.in{opacity:1; transform:translateY(0);}
+  .portfolio-card:hover{box-shadow:0 20px 38px -16px rgba(56,53,46,0.3); transform:translateY(-4px);}
+  .portfolio-preview{aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; font-size:2.6rem; position:relative; transition:filter .4s ease;}
+  .portfolio-status{position:absolute; top:12px; right:12px;}
+  .portfolio-body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .portfolio-title{font-size:1.12rem; font-weight:600;}
+  .portfolio-desc{font-size:.9rem; color:var(--ink-soft); flex:1;}
+  .portfolio-tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .tech-tag{font-family:'IBM Plex Mono',monospace; font-size:.62rem; padding:4px 10px; border-radius:999px; background:var(--paper-warm); border:1px solid var(--line); color:var(--ink-soft);}
+  .portfolio-actions{display:flex; gap:10px; margin-top:4px; flex-wrap:wrap;}
+  .btn-sm{padding:9px 16px; font-size:.78rem;}
+
+  /* ================= LIFE TIMELINE ================= */
+  .life-timeline{position:relative; z-index:1; max-width:760px;}
+  .life-line{position:absolute; left:19px; top:8px; bottom:8px; width:1px; background:linear-gradient(var(--line),var(--line) 70%, transparent);}
+  @media(max-width:640px){.life-line{left:11px;}}
+  .life-item{display:grid; grid-template-columns:40px 1fr; gap:24px; padding-bottom:44px; opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
+  .life-item.in{opacity:1; transform:translateY(0);}
+  .life-item:last-child{padding-bottom:0;}
+  @media(max-width:640px){.life-item{grid-template-columns:24px 1fr; gap:16px;}}
+  .life-node{width:40px;height:40px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex;align-items:center;justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:.62rem; color:var(--dusty-deep); box-shadow:var(--shadow); z-index:1;}
+  @media(max-width:640px){.life-node{width:24px;height:24px; font-size:0;}}
+  .life-year{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:var(--ink-faint); margin-bottom:4px; display:block;}
+  .life-title{font-weight:600; font-size:1.05rem; margin-bottom:6px;}
+  .life-desc{font-size:.9rem; color:var(--ink-soft);}
+
+  /* ================= CONTACT ================= */
+  .contact{background:var(--paper-warm); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1.2fr; gap:48px; position:relative; z-index:1;}
+  @media(max-width:780px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-info-list{display:flex; flex-direction:column; gap:12px; margin-bottom:24px; list-style:none;}
+  .contact-info-item{display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); transition:transform .25s ease, border-color .25s ease;}
+  .contact-info-item:hover{transform:translateX(4px); border-color:var(--sage-deep);}
+  .contact-info-icon{font-size:1.2rem; flex-shrink:0;}
+  .contact-info-label{font-family:'IBM Plex Mono',monospace; font-size:.6rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); display:block;}
+  .contact-info-value{font-size:.92rem; font-weight:600;}
+  .contact-form{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md); padding:30px 28px; box-shadow:var(--shadow);}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block; font-family:'IBM Plex Mono',monospace; font-size:.64rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:8px;}
+  .form-group input, .form-group textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius-sm);
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:.92rem; background:var(--paper); color:var(--ink); resize:vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus{outline:2px solid var(--sage-deep); outline-offset:1px;}
+  .form-status{margin-top:14px; font-size:.85rem; font-family:'IBM Plex Mono',monospace; min-height:1.2em;}
+  .form-status.success{color:var(--sage-deep);}
+  .form-status.error{color:var(--clay-deep);}
+
+  /* ================= PRINT CV ================= */
+  .print-only{display:none;}
+  @media print{
+    body > *:not(#cvPrintable){display:none !important;}
+    #cvPrintable{display:block !important; padding:36px; color:#222; font-family:'Plus Jakarta Sans',sans-serif; background:#fff;}
+    #cvPrintable h1{font-family:'Fraunces',serif; font-size:1.8rem; margin-bottom:4px;}
+    #cvPrintable h2{font-size:1.05rem; margin:22px 0 8px; border-bottom:1px solid #ccc; padding-bottom:4px;}
+    #cvPrintable .cv-tagline{color:#555; margin-bottom:18px; font-size:.85rem;}
+    #cvPrintable ul{margin-left:18px; margin-bottom:10px;}
+    #cvPrintable .cv-row{display:flex; justify-content:space-between; font-size:.85rem; margin-bottom:6px;}
+    #cvPrintable .cv-tag{display:inline-block; font-size:.72rem; border:1px solid #ccc; border-radius:999px; padding:2px 10px; margin:0 6px 6px 0;}
+  }
+</style>
+</head>
+<body>
+<!-- 📝 Catatan: ganti data biodata, foto, link sosial, dan isi CV di bawah dengan milikmu sendiri -->
+
+<!-- ================= LOADING SCREEN ================= -->
+<div class="loading-screen" id="loadingScreen" aria-hidden="true">
+  <div class="loading-mark">Membuka diary…</div>
+  <div class="loading-bar"></div>
+  <div class="loading-sub">Danis Tri Yudha T · digital diary</div>
+</div>
+
+<div class="progress-bar" aria-hidden="true"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Ganti mode gelap/terang">
+  <span id="themeIcon">🌙</span>
+</button>
+
+<button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+
+<nav class="pill-nav" aria-label="Navigasi cepat">
+  <a class="pill-item active" href="#hero" data-tab="hero">
+    <svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9h5v-5h2v5h5v-9"/></svg>
+    <span class="pill-item__text">Beranda</span>
+  </a>
+  <a class="pill-item" href="#about" data-tab="about">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg>
+    <span class="pill-item__text">Profil</span>
+  </a>
+  <a class="pill-item" href="#projects" data-tab="projects">
+    <svg viewBox="0 0 24 24"><path d="M4 7h5l1.6 2H20v10H4z"/></svg>
+    <span class="pill-item__text">Proyek</span>
+  </a>
+  <a class="pill-item" href="#gallery" data-tab="gallery">
+    <svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 5-4.5 3 2.5 3-3 3.5 5"/></svg>
+    <span class="pill-item__text">Galeri</span>
+  </a>
+  <a class="pill-item" href="#contact" data-tab="contact">
+    <svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 6.5 8 6 8-6"/></svg>
+    <span class="pill-item__text">Kontak</span>
+  </a>
+</nav>
+
+
+<button class="dash-toggle" id="dashToggle" aria-expanded="false" aria-controls="dashPanel" aria-label="Buka menu dashboard">
+  <span id="dashIcon">⌘</span>
+</button>
+<div class="dash-overlay" id="dashOverlay"></div>
+<aside class="dash-panel" id="dashPanel" aria-hidden="true" aria-label="Menu dashboard">
+  <div class="dash-head">
+    <span class="mono dash-eyebrow">control panel</span>
+    <button class="dash-close" id="dashClose" aria-label="Tutup menu">✕</button>
+  </div>
+  <nav class="dash-nav">
+    <a href="#hero" class="dash-link" data-tab="hero"><span class="dash-link-num">01</span> Beranda</a>
+    <a href="#about" class="dash-link" data-tab="about"><span class="dash-link-num">02</span> Tentang Aku</a>
+    <a href="#living" class="dash-link" data-tab="living"><span class="dash-link-num">03</span> Sekarang</a>
+    <a href="#skills" class="dash-link" data-tab="skills"><span class="dash-link-num">04</span> Skills</a>
+    <a href="#stats" class="dash-link" data-tab="stats"><span class="dash-link-num">05</span> Statistik</a>
+    <a href="#techstack" class="dash-link" data-tab="techstack"><span class="dash-link-num">06</span> Tech Stack</a>
+    <a href="#projects" class="dash-link" data-tab="projects"><span class="dash-link-num">07</span> Proyek</a>
+    <a href="#portfolio" class="dash-link" data-tab="portfolio"><span class="dash-link-num">08</span> Portofolio</a>
+    <a href="#timeline" class="dash-link" data-tab="timeline"><span class="dash-link-num">09</span> Perjalanan</a>
+    <a href="#gallery" class="dash-link" data-tab="gallery"><span class="dash-link-num">10</span> Kenangan</a>
+    <a href="#favorites" class="dash-link" data-tab="favorites"><span class="dash-link-num">11</span> Favorit</a>
+    <a href="#goals" class="dash-link" data-tab="goals"><span class="dash-link-num">12</span> Tujuan</a>
+    <a href="#contact" class="dash-link" data-tab="contact"><span class="dash-link-num">13</span> Kontak</a>
+    <a href="#closing" class="dash-link" data-tab="closing"><span class="dash-link-num">14</span> Surat</a>
+  </nav>
+  <div class="dash-status">
+    <span class="dash-status-label mono">live status</span>
+    <div class="dash-status-row">💻 <span>Membangun asisten belajar AI</span></div>
+    <div class="dash-status-row">☕ <span>Mood: tenang &amp; penasaran</span></div>
+    <div class="dash-status-row mono dash-progress-text">📖 <span id="dashReadProgress">0%</span> terbaca</div>
+  </div>
+</aside>
+
+<button class="ai-toggle" id="aiToggle" aria-expanded="false" aria-controls="aiPanel" aria-label="Buka teman ngobrol AI">💬</button>
+<div class="ai-panel" id="aiPanel" role="dialog" aria-label="Teman ngobrol AI" aria-hidden="true">
+  <div class="ai-header">
+    <div>
+      <div class="ai-header-title">AI Companion</div>
+      <div class="ai-header-sub">teman ngobrol di diary ini</div>
+    </div>
+    <button class="ai-header-close" id="aiClose" aria-label="Tutup obrolan">✕</button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-msg assistant">Woy, akhirnya! 👋 Gue temen lo yang nongkrong di diary ini. Ada cerita seru? Atau lagi stuck ngoding trus butuh temen curhat? Gaskeun aja, santai kok 😎</div>
+  </div>
+  <div class="ai-input-row">
+    <input type="text" class="ai-input" id="aiInput" placeholder="Curhat atau tanya aja, santuy..." aria-label="Tulis pesan untuk AI Companion">
+    <button class="ai-send" id="aiSend" aria-label="Kirim pesan">↑</button>
+  </div>
+</div>
+
+<nav class="diary-tabs" aria-label="Navigasi diary">
+  <a class="diary-tab" href="#hero" data-tab="hero">Beranda</a>
+  <a class="diary-tab" href="#about" data-tab="about">Profil</a>
+  <a class="diary-tab" href="#skills" data-tab="skills">Skill</a>
+  <a class="diary-tab" href="#projects" data-tab="projects">Proyek</a>
+  <a class="diary-tab" href="#portfolio" data-tab="portfolio">Portofolio</a>
+  <a class="diary-tab" href="#timeline" data-tab="timeline">Perjalanan</a>
+  <a class="diary-tab" href="#gallery" data-tab="gallery">Kenangan</a>
+  <a class="diary-tab" href="#goals" data-tab="goals">Tujuan</a>
+  <a class="diary-tab" href="#contact" data-tab="contact">Kontak</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <span class="blob" aria-hidden="true"></span>
+  <span class="blob" aria-hidden="true"></span>
+  <span class="blob" aria-hidden="true"></span>
+  <div class="wrap hero-inner">
+    <div class="hero-stamp">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="mono" style="font-size:0.72rem; color:var(--ink-soft);">entri terbuka &nbsp;·&nbsp; <span id="heroDate"></span></span>
+    </div>
+    <h1 class="display"><span class="reveal-word">Danis Tri</span> <em class="reveal-word">Yudha Tama</em></h1>
+    <p class="hero-tagline"><span class="reveal-word">Student</span> <span class="sep">•</span> <span class="reveal-word">AI Developer</span> <span class="sep">•</span> <span class="reveal-word">Dreamer</span></p>
+    <p class="hero-copy">Halo, selamat datang di sudut kecil duniaku.</p>
+    <div class="hero-actions">
+      <a href="#about" class="btn btn-primary">Jelajahi Duniaku ↓</a>
+      <a href="#contact" class="btn btn-ghost">Hubungi Aku</a>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+</section>
+
+<!-- ================= ABOUT ME ================= -->
+<section class="about" id="about">
+  <span class="blob" style="width:220px;height:220px;background:var(--clay); top:6%; right:-6%; opacity:0.22;" aria-hidden="true" data-parallax="0.05"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ tentang aku</span>
+      <h2 class="display">About Me</h2>
+      <p>Sedikit perkenalan biar kamu nggak cuma lihat proyeknya, tapi juga kenal orangnya.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="profil.jpeg" alt="Foto Danis" onerror="this.closest('.about-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🌿</span><span class="acc-fallback-label">Belum ada foto</span></div>
+          <span class="about-photo-badge">📍 Madiun, ID</span>
+        </div>
+      </div>
+      <div>
+        <div class="typed-wrap"><span id="typedRole"></span><span class="typed-cursor" aria-hidden="true"></span></div>
+        <p class="about-desc">Halo Broo, Aku seorang developer yang sedang fokus belajar dan mengembangkan kemampuan di bidang web development. Bagiku setiap error adalah pelajaran, dan setiap proyek adalah kesempatan untuk terus berkembang. Senang bisa berbagi dan belajar bersama!</p>
+        <p class="about-motto">"Belajar sedikit demi sedikit, tapi konsisten itu sudah cukup baik untuk mulai menjadi lebih baik."</p>
+        <dl class="about-info-list">
+          <div class="about-info-item"><dt>Nama Lengkap</dt><dd>Danis Tri Yudha Tama</dd></div>
+          <div class="about-info-item"><dt>Umur</dt><dd>17 tahun</dd></div>
+          <div class="about-info-item"><dt>Asal</dt><dd>Madiun, Jawa Timur</dd></div>
+          <div class="about-info-item"><dt>Sekolah</dt><dd>SMK Negeri 1 Mejayan</dd></div>
+          <div class="about-info-item"><dt>Jurusan</dt><dd>Rekayasa Perangkat Lunak (RPL)</dd></div>
+          <div class="about-info-item"><dt>Status</dt><dd>Kelas XII</dd></div>
+        </dl>
+        <div class="about-actions">
+          <button class="btn btn-primary" id="downloadCvBtn" type="button">Download CV ⬇</button>
+          <a href="#contact" class="btn btn-ghost">Kontak Aku</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CURRENTLY LIVING ================= -->
+<section class="living" id="living">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ sedang dijalani</span>
+      <h2 class="display">Currently Living</h2>
+      <p>Potret kecil dari hari-hariku belakangan ini — versi yang paling jujur dari sebuah update status ( Stories of my everyday life—brief glimpses. ).</p>
+      <span class="date-stamp">diperbarui otomatis · <span id="livingDate"></span></span>
+    </div>
+    <div class="living-grid">
+      <div class="living-card">
+        <span class="living-icon">💻</span>
+        <span class="living-label">Sedang Dikerjakan</span>
+        <p class="living-text">Membangun Brand/Bisnis kecil-kecilan bernama Digitalkan.Co yang sekarang proses upgrade besar besaran versi DiGitalkan.Co V2</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">📚</span>
+        <span class="living-label">Sedang Dipelajari</span>
+        <p class="living-text">Dasar-dasar machine learning &amp; Python yang lebih rapi, dan Laravel</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🎵</span>
+        <span class="living-label">Teman Dengar</span>
+        <p class="living-text">Lo-fi beats Lagu Senja</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">☕</span>
+        <span class="living-label">Mood Hari Ini</span>
+        <p class="living-text">B aja sihh wkwk, Santai dan Nikmatin hidup</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🎯</span>
+        <span class="living-label">Sedang Dikejar</span>
+        <p class="living-text">DiGitalkan.Co V2 yang lebih modern dan lebih mendunia, serta berusaha membuat brand ini bisa dikenal luas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ kemampuan</span>
+      <h2 class="display">Skills</h2>
+      <p>Jangan malas bro. Dunia nggak peduli sama alasanmu . Kalau lo berhenti belajar, siap-siap tertinggal . Terus berusaha, terus berkembang, dan buktiin kalau lo juga bisa sukses. 💻🔥</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🟧 HTML</span><span class="skill-pct">95%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="95"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🟦 CSS</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🟨 JavaScript</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="75"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🐘 PHP</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🐍 Python</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="75"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🗄️ MySQL</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🔧 Git &amp; GitHub</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🎨 Canva</span><span class="skill-pct">95%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="95"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🤖 AI Prompt Engineering</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">🧩 UI/UX Dasar</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-pct="90"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATISTICS ================= -->
+<section class="stats" id="stats">
+  <span class="blob" style="width:260px;height:260px;background:var(--sage-deep); top:0%; left:-8%; opacity:0.15;" aria-hidden="true" data-parallax="0.04"></span>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ dalam angka</span>
+      <h2 class="display">Statistics</h2>
+      <p>Ringkasan kecil dari perjalanan belajar sejauh ini.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-number" data-target="14">0</div><div class="stat-label">Proyek Dibuat</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="337" data-suffix="+">0</div><div class="stat-label">Jam Belajar</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="2">0</div><div class="stat-label">Sertifikat</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="8">0</div><div class="stat-label">Website Dibuat</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="3">0</div><div class="stat-label">Tahun Belajar Coding</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECH STACK ================= -->
+<section id="techstack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ perkakas</span>
+      <h2 class="display">Tech Stack</h2>
+      <p>Tools dan bahasa yang paling sering aku pakai buat belajar dan membangun proyek.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/html5/AD7B58" alt="" loading="lazy" width="30" height="30"><span>HTML5</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/css3/5F7C93" alt="" loading="lazy" width="30" height="30"><span>CSS3</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/javascript/6E9680" alt="" loading="lazy" width="30" height="30"><span>JavaScript</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/php/8FA7BC" alt="" loading="lazy" width="30" height="30"><span>PHP</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/python/AD7B58" alt="" loading="lazy" width="30" height="30"><span>Python</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/mysql/5F7C93" alt="" loading="lazy" width="30" height="30"><span>MySQL</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/git/C99977" alt="" loading="lazy" width="30" height="30"><span>Git</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/github/38352E" alt="" loading="lazy" width="30" height="30"><span>GitHub</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/canva/6E9680" alt="" loading="lazy" width="30" height="30"><span>Canva</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/visualstudiocode/8FA7BC" alt="" loading="lazy" width="30" height="30"><span>VS Code</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/figma/AD7B58" alt="" loading="lazy" width="30" height="30"><span>Figma</span></div>
+      <div class="tech-item"><img src="https://cdn.simpleicons.org/anthropic/38352E" alt="" loading="lazy" width="30" height="30"><span>Claude AI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ perjalanan</span>
+      <h2 class="display">My Projects</h2>
+      <p>Bukan daftar resume — ini catatan perjalanan dari setiap hal yang pernah aku coba bangun.</p>
+    </div>
+
+    <div class="journey">
+      <div class="journey-line" aria-hidden="true"></div>
+
+      <div class="project">
+        <div class="project-node">01</div>
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-title">Facial Recognition and AI Assistant</span>
+            <span class="status-pill status-progress">Dalam Pengembangan</span>
+          </div>
+          <p class="project-desc">Kamera atau sensor menangkap gambar atau video wajah, memetakan fitur unik (seperti jarak antar mata atau garis rahang), dan mengubahnya menjadi data numerik (faceprint). Didukung oleh Pemrosesan Bahasa Alami (NLP) dan pembelajaran mesin. Sistem ini memahami perintah suara atau teks, merespons pertanyaan, mencari informasi, dan mengotomatiskan tugas.</p>
+          <div class="progress-track"><div class="progress-fill" data-pct="85"></div></div>
+          <span class="progress-pct">85% selesai</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-node">02</div>
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-title">Website Portofolio Interaktif</span>
+            <span class="status-pill status-done">Selesai</span>
+          </div>
+          <p class="project-desc">Website personal pertama yang benar-benar terasa "aku" — dari palet warna sampai detail kecil animasinya.</p>
+          <div class="progress-track"><div class="progress-fill" data-pct="100"></div></div>
+          <span class="progress-pct">100% selesai</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-node">03</div>
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-title">Eksperimen Gestur Tangan Menggunakan PHP</span>
+            <span class="status-pill status-done">Selesai</span>
+          </div>
+          <p class="project-desc">Proyek ini adalah sistem pengenalan gerakan tangan yang menggunakan bahasa pemrograman PHP sebagai sisi backend (pemrosesan dan penyimpanan data server).</p>
+          <div class="progress-track"><div class="progress-fill" data-pct="100"></div></div>
+          <span class="progress-pct">100% selesai</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-node">04</div>
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-title">Website Digitalkan.Co V2</span>
+            <span class="status-pill status-progress">80% Progress</span>
+          </div>
+          <p class="project-desc">Sudah ditahap penyelesaian, Mungkin hanya perbaikan file file atau code tertentu serta penambahan fitur</p>
+          <div class="progress-track"><div class="progress-fill" data-pct="80"></div></div>
+          <span class="progress-pct">80% selesai</span>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-node">05</div>
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-title">Website Ulang Tahun</span>
+            <span class="status-pill status-done">Selesai</span>
+          </div>
+          <p class="project-desc">Sudah ditahap penyelesaian</p>
+          <div class="progress-track"><div class="progress-fill" data-pct="100"></div></div>
+          <span class="progress-pct">100% selesai</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="living" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ Hasil karyaku</span>
+      <h2 class="display">Portofolio</h2>
+      <p>Beberapa proyek yang sudah cukup rapi untuk dipamerkan lengkap dengan tautannya (masih terus di-upgrade).</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <div class="portfolio-preview p1">
+          🚀
+          <span class="status-pill status-done portfolio-status">Selesai</span>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-title">Digitalkan.Co V1</span>
+          <p class="portfolio-desc">Website personal ini sendiri — Perpaduan dari konsep modern dan minimalis</p>
+          <div class="portfolio-tags">
+            <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="portfolio-actions">
+            <a href="https://digitalkan-co.vercel.app/" class="btn btn-primary btn-sm">Live Demo ↗</a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Source Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-preview p2">
+          🤖
+          <span class="status-pill status-done portfolio-status">Selesai</span>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-title">Happy Birthday</span>
+          <p class="portfolio-desc">Webiste yang sangat sangat istimewa, perpaduan antara rasa romantis dan humoris</p>
+          <div class="portfolio-tags">
+            <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="portfolio-actions">
+            <a href="https://birthday-enjelica.vercel.app/" class="btn btn-primary btn-sm">Live Demo ↗</a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="date-stamp" style="margin-top:24px;">ℹ️ Untuk proyek berbasis PHP dan Python belum ditampilkan di sini karena masih berjalan di localhost dan belum di-hosting.</p>
+  </div>
+</section>
+
+<!-- ================= LIFE JOURNEY / TIMELINE ================= -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ dari tahun ke tahun</span>
+      <h2 class="display">My Journey</h2>
+      <p>Perjalanan pendidikan dan skill yang perlahan tersusun dan sedikit mulai sedikit paham, satu tahun demi satu tahun.</p>
+    </div>
+    <div class="life-timeline">
+      <div class="life-line" aria-hidden="true"></div>
+      <div class="life-item">
+        <div class="life-node">'24</div>
+        <div>
+          <span class="life-year">2024</span>
+          <div class="life-title">Masuk SMK, jurusan RPL</div>
+          <p class="life-desc">Mulai mengenal dasar HTML &amp; CSS dari tugas sekolah pertama — awal mula suka dan sedikit pusing tentang itu coding.</p>
+        </div>
+      </div>
+      <div class="life-item">
+        <div class="life-node">'25</div>
+        <div>
+          <span class="life-year">2025</span>
+          <div class="life-title">Belajar PHP - Database</div>
+          <p class="life-desc">Mulai berani bikin proyek pribadi kecil-kecilan dan sering mencari ilmu / informasi dari medsos</p>
+        </div>
+      </div>
+      <div class="life-item">
+        <div class="life-node">'26</div>
+        <div>
+          <span class="life-year">2026 - Sekarang </span>
+          <div class="life-title">Mulai eksplorasi AI, Membangun Web berbasis PHP - Database - CRUD &amp; ikut PKL</div>
+          <p class="life-desc">Belajar prompt engineering, machine learning dasar, menghubungkan database, menyelsaikan projek UAS ( PHP-Database-CRUD) sekaligus merasakan dunia kerja lewat program PKL di studio digital.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ album kenangan</span>
+      <h2 class="display">Memory Gallery</h2>
+      <p>Kumpulan momen dikelompokkan per tema — pilih kategorinya, lalu tap foto buat lihat lebih besar.</p>
+    </div>
+    <!-- 📝 Tiap kategori isinya 5 foto. Taruh file foto (nama sesuai src di bawah, format .jpg) sejajar dengan index.html.
+         Mau ganti nama kategori / jumlah foto / urutan tinggal edit tab & grid di bawah ini.
+         Kalau file belum ada / salah nama, otomatis muncul placeholder rapi, bukan ikon rusak. -->
+    <div class="moment-tabs" role="tablist" aria-label="Kategori momen">
+      <button class="moment-tab active" data-moment="tentang-aku" role="tab" aria-selected="true">🌿 Tentang Aku</button>
+      <button class="moment-tab" data-moment="syilats" role="tab" aria-selected="false">🫳🏻🫴🏻 Syilatss</button>
+      <button class="moment-tab" data-moment="gril" role="tab" aria-selected="false">👧🏻 Girl</button>
+      <button class="moment-tab" data-moment="random" role="tab" aria-selected="false">🤝 Random</button>
+    </div>
+    <div class="moment-panels">
+      <div class="moment-grid active" data-moment="tentang-aku">
+        <button class="moment-photo" type="button" aria-label="Momen sehari-hari">
+          <img src="foto1aku.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Lagi mikirin project">
+          <img src="foto2aku.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Selfie iseng">
+          <img src="foto3aku.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Potret diri">
+          <img src="foto4aku.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Lagi santai">
+          <img src="foto5aku.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+      </div>
+      <div class="moment-grid" data-moment="syilats">
+        <button class="moment-photo" type="button" aria-label="Healing ke pantai">
+          <img src="foto1slt.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Ngopi santai">
+          <img src="foto2slt.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Jalan-jalan sore">
+          <img src="foto3slt.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Nonton bareng">
+          <img src="foto4slt.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Me time">
+          <img src="foto5slt.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+      </div>
+      <div class="moment-grid" data-moment="gril">
+        <button class="moment-photo" type="button" aria-label="Ngoding tengah malam">
+          <img src="foto1kita.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Belajar bareng teman">
+          <img src="foto2kita.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Lagi debug error">
+          <img src="foto3kita.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Ikut workshop">
+          <img src="foto4kita.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Belajar di kelas">
+          <img src="foto5kita.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+      </div>
+      <div class="moment-grid" data-moment="random>
+        <button class="moment-photo" type="button" aria-label="Nongkrong bareng">
+          <img src="foto1rndm.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Kerja kelompok">
+          <img src="foto2rndm.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Momen PKL">
+          <img src="foto3rndm.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Foto bareng">
+          <img src="foto4rndm.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+        <button class="moment-photo" type="button" aria-label="Seru-seruan">
+          <img src="foto5.rndm.jpeg" alt="" loading="lazy" onerror="this.closest('.moment-photo').classList.add('no-image')">
+          <div class="acc-fallback" aria-hidden="true"><span class="acc-fallback-icon">🖼️</span><span class="acc-fallback-label">Belum ada foto</span></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIGHTBOX (preview foto galeri) ================= -->
+<div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Pratinjau foto">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Tutup pratinjau">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Foto sebelumnya">‹</button>
+  <div class="lightbox-stage">
+    <img id="lightboxImg" src="" alt="">
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
+  <button class="lightbox-next" id="lightboxNext" aria-label="Foto berikutnya">›</button>
+</div>
+
+<!-- ================= FAVORITES ================= -->
+<section id="favorites">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ hal-hal favorit</span>
+      <h2 class="display">Favorites</h2>
+      <p>Beberapa hal kecil yang bikin hari-hari belajar terasa lebih menyenangkan.</p>
+    </div>
+    <div class="living-grid">
+      <div class="living-card">
+        <span class="living-icon">🎨</span>
+        <span class="living-label">Hobi</span>
+        <p class="living-text">Menggambar digital &amp; utak-atik desain UI</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🍜</span>
+        <span class="living-label">Makanan Favorit</span>
+        <p class="living-text">Mie ayam No Debat</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🧋</span>
+        <span class="living-label">Minuman Favorit</span>
+        <p class="living-text">Lakiii Jelass KOPIIII</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🎧</span>
+        <span class="living-label">Musik Favorit</span>
+        <p class="living-text">Nina bobok</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🎬</span>
+        <span class="living-label">Film Favorit</span>
+        <p class="living-text">Tantangan / Eksplor / Pengetahuan (Sejarah)</p>
+      </div>
+      <div class="living-card">
+        <span class="living-icon">🌧️</span>
+        <span class="living-label">Aktivitas Favorit</span>
+        <p class="living-text">Ngoding - Dolan - Ngopi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GOALS TIMELINE ================= -->
+<section id="goals">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ mimpi ke depan</span>
+      <h2 class="display">Goals Timeline</h2>
+      <p>Target-target yang sedang aku susun, satu per satu, tanpa terburu-buru.</p>
+    </div>
+    <div class="goals-list">
+      <div class="goal done">
+        <span class="goal-check">✓</span>
+        <div>
+          <div class="goal-title">Menguasai fundamental pemrograman</div>
+          <div class="goal-sub">HTML, CSS, JavaScript, Python, PHP.</div>
+          <span class="goal-tag">Tercapai</span>
+        </div>
+      </div>
+      <div class="goal done">
+        <span class="goal-check">✓</span>
+        <div>
+          <div class="goal-title">Membangun proyek PHP pertama ( Pemesanan Tiket ) Ujian Akhir</div>
+          <div class="goal-sub">Belajar dari nol sampai punya sesuatu yang berjalan dan terkenang.</div>
+          <span class="goal-tag">Tercapai</span>
+        </div>
+      </div>
+      <div class="goal current">
+        <span class="goal-check">◐</span>
+        <div>
+          <div class="goal-title">Magang di bidang teknologi</div>
+          <div class="goal-sub">Belajar langsung dari lingkungan kerja yang sesungguhnya.</div>
+          <span class="goal-tag">Sedang Berjalan</span>
+        </div>
+      </div>
+      <div class="goal upcoming">
+        <span class="goal-check">○</span>
+        <div>
+          <div class="goal-title">Berkontribusi ke proyek open source</div>
+          <div class="goal-sub">Ikut membangun sesuatu yang dipakai orang lain.</div>
+          <span class="goal-tag">Persiapan V2</span>
+        </div>
+      </div>
+      <div class="goal upcoming">
+        <span class="goal-check">○</span>
+        <div>
+          <div class="goal-title">Membangun startup kecil sendiri</div>
+          <div class="goal-sub">Mimpi besar yang masih terus dijaga pelan-pelan.</div>
+          <span class="goal-tag">Suatu Hari Nanti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✦ Mari terhubung</span>
+      <h2 class="display">Contact</h2>
+      <p>Mau ngobrol soal proyek, kolaborasi, atau sekadar say hi? Boleh banget lewat sini yaaa.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <ul class="contact-info-list">
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">📧</span>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <a class="contact-info-value" href="danistriyudha@gmail.com">danistriyudha@gmail.com</a>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">💬</span>
+            <div>
+              <span class="contact-info-label">WhatsApp</span>
+              <a class="contact-info-value" href="https://wa.me/qr/VDRJMQS4I2LLJ1" target="_blank" rel="noopener">+62 815-1551-7281</a>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">🐙</span>
+            <div>
+              <span class="contact-info-label">GitHub</span>
+              <a class="contact-info-value" href="https://github.com/dansstyt" target="_blank" rel="noopener">github.com/dansstyt</a>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">📸</span>
+            <div>
+              <span class="contact-info-label">Instagram</span>
+              <a class="contact-info-value" href="https://www.instagram.com/dannskuyyyyy_?igsh=MWc4dTluaXF3djgwZQ==" target="_blank" rel="noopener">@dannskuyyyyy_</a>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">🎵</span>
+            <div>
+              <span class="contact-info-label">TikTok</span>
+              <!-- 📝 Cek lagi link TikTok-nya ya, sepertinya kemarin belum sempat diganti -->
+              <a class="contact-info-value" href="https://tiktok.com/@dnsydha" target="_blank" rel="noopener">@dnsydha</a>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <span class="contact-info-icon" aria-hidden="true">📍</span>
+            <div>
+              <span class="contact-info-label">Lokasi</span>
+              <span class="contact-info-value">Madiun, Jawa Timur, Indonesia</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="cfName">Nama</label>
+          <input type="text" id="cfName" name="name" placeholder="Nama kamu" required>
+        </div>
+        <div class="form-group">
+          <label for="cfEmail">Email</label>
+          <input type="email" id="cfEmail" name="email" placeholder="email@kamu.com" required>
+        </div>
+        <div class="form-group">
+          <label for="cfMessage">Pesan</label>
+          <textarea id="cfMessage" name="message" rows="4" placeholder="Tulis pesanmu di sini broo..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="cfSubmit" style="width:100%; justify-content:center;">Kirim Pesan</button>
+        <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="closing">
+  <span class="blob" style="width:260px;height:260px;background:var(--sage); top:10%; left:8%;" aria-hidden="true"></span>
+  <span class="blob" style="width:220px;height:220px;background:var(--dusty); bottom:0%; right:6%;" aria-hidden="true"></span>
+  <div class="wrap closing-inner">
+    <span class="eyebrow" style="justify-content:center; margin-bottom:22px;">✦ Surat Penutup</span>
+    <p>""Jangan menyerah hanya karena satu error. Terus berjuang, hadapi setiap tantangan, dan percayalah bahwa setiap baris kode yang kamu tulis sedang membentuk masa depanmu. Hari ini kamu belajar, besok kamu berkembang, dan suatu saat nanti kamu akan menjadi developer yang menginspirasi banyak orang." 💻🚀</p>
+    <div class="closing-sign">Danis Tri Yudha Tama</div>
+    <div class="closing-note">Masih terus belajar · Masih terus berkembang · Masih terus bermimpi</div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Danis Tri Yudha T ( DiGitalkan.Co ).</footer>
+
+<!-- ================= HIDDEN PRINTABLE CV (untuk fitur Download CV) ================= -->
+<div id="cvPrintable" class="print-only">
+  <h1>Danis Tri Yudha Tama</h1>
+  <p class="cv-tagline">Student · AI Developer · Web Developer — Mejayan, Madiun, Jawa Timur</p>
+  <p>Email: danistriyudha@gmail.com &nbsp;|&nbsp; WhatsApp: +62 815-1551-7281 &nbsp;|&nbsp; GitHub: github.com/dansstyt</p>
+
+  <h2>Tentang</h2>
+  <p>Pelajar SMK jurusan Rekayasa Perangkat Lunak (RPL) yang aktif belajar web development dan AI. Terbiasa membangun proyek pribadi kecil sebagai media belajar.</p>
+
+  <h2>Pendidikan</h2>
+  <div class="cv-row"><span>SMK Negeri 1 Mejayan — Rekayasa Perangkat Lunak (RPL)</span><span>2024 – sekarang</span></div>
+
+  <h2>Pengalaman</h2>
+  <div class="cv-row"><span>PKL — Kospin Parikesit</span><span>Juli – Desember 2026</span></div>
+
+  <h2>Skills</h2>
+  <p>
+    <span class="cv-tag">HTML</span><span class="cv-tag">CSS</span><span class="cv-tag">JavaScript</span>
+    <span class="cv-tag">PHP</span><span class="cv-tag">Python</span><span class="cv-tag">MySQL</span>
+    <span class="cv-tag">Git/GitHub</span><span class="cv-tag">Canva</span><span class="cv-tag">AI Prompt Engineering</span>
+  </p>
+
+  <h2>Sertifikat &amp; Prestasi</h2>
+  <ul>
+    <li>Ganti dengan sertifikat/prestasi asli kamu di sini</li>
+    <li>Ganti dengan sertifikat/prestasi asli kamu di sini</li>
+  </ul>
+</div>
+
+<script>
+  // Current date for diary stamps
+  const now = new Date();
+  const opts = { day:'numeric', month:'long', year:'numeric' };
+  const dateStr = now.toLocaleDateString('id-ID', opts);
+  document.getElementById('heroDate').textContent = dateStr;
+  document.getElementById('livingDate').textContent = dateStr;
+  document.getElementById('year').textContent = now.getFullYear();
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ================= SCROLL REVEAL (extended to all new sections) =================
+  const revealEls = document.querySelectorAll(
+    '.living-card, .project, .goal, .skill-row, .stat-card, .tech-item, .portfolio-card, .life-item, .moment-panels'
+  );
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        const fill = entry.target.querySelector('.progress-fill, .skill-fill');
+        if(fill){ fill.style.width = fill.dataset.pct + '%'; }
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.2 });
+  revealEls.forEach(el=>{
+    const siblings = Array.from(el.parentElement.children);
+    const idx = siblings.indexOf(el) % 8;
+    el.style.transitionDelay = (idx*0.07)+'s';
+    io.observe(el);
+  });
+
+  // ================= GALLERY: MOMENT TABS (switch between photo categories) =================
+  const momentTabs = document.querySelectorAll('.moment-tab');
+  const momentGrids = document.querySelectorAll('.moment-grid');
+  momentTabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const key = tab.dataset.moment;
+      momentTabs.forEach(t=>{
+        const active = t === tab;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', String(active));
+      });
+      momentGrids.forEach(g=> g.classList.toggle('active', g.dataset.moment === key));
+    });
+  });
+
+  // ================= GALLERY: LIGHTBOX (tap a photo to preview large) =================
+  const lightbox = document.getElementById('lightboxOverlay');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  let currentGridPhotos = [];
+  let currentPhotoIdx = 0;
+
+  function showLightboxPhoto(){
+    const btn = currentGridPhotos[currentPhotoIdx];
+    if(!btn) return;
+    const img = btn.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = img.alt;
+  }
+  function openLightbox(photoBtn){
+    if(photoBtn.classList.contains('no-image')) return;
+    const grid = photoBtn.closest('.moment-grid');
+    currentGridPhotos = Array.from(grid.querySelectorAll('.moment-photo')).filter(p=>!p.classList.contains('no-image'));
+    currentPhotoIdx = currentGridPhotos.indexOf(photoBtn);
+    if(currentPhotoIdx === -1 || currentGridPhotos.length === 0) return;
+    showLightboxPhoto();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden','false');
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+  }
+  document.querySelectorAll('.moment-photo').forEach(photo=>{
+    photo.addEventListener('click', ()=> openLightbox(photo));
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+  lightboxPrev.addEventListener('click', ()=>{
+    if(!currentGridPhotos.length) return;
+    currentPhotoIdx = (currentPhotoIdx - 1 + currentGridPhotos.length) % currentGridPhotos.length;
+    showLightboxPhoto();
+  });
+  lightboxNext.addEventListener('click', ()=>{
+    if(!currentGridPhotos.length) return;
+    currentPhotoIdx = (currentPhotoIdx + 1) % currentGridPhotos.length;
+    showLightboxPhoto();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') lightboxPrev.click();
+    if(e.key === 'ArrowRight') lightboxNext.click();
+  });
+
+  // ================= ANIMATED COUNTERS (Statistics section) =================
+  const counters = document.querySelectorAll('.stat-number[data-target]');
+  const counterObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      el.closest('.stat-card').classList.add('in');
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const suffix = el.dataset.suffix || '';
+      if(prefersReduced){ el.textContent = target + suffix; counterObserver.unobserve(el); return; }
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + (p >= 1 ? suffix : '');
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold:0.4 });
+  counters.forEach(el=> counterObserver.observe(el));
+
+  // ================= TYPED ROLE (About Me) =================
+  const typedEl = document.getElementById('typedRole');
+  const typedRoles = ['Pelajar yang penasaran', 'AI Enthusiast', 'Calon Web Developer', 'Pemimpi Digital'];
+  if(typedEl){
+    if(prefersReduced){
+      typedEl.textContent = typedRoles[0];
+    } else {
+      let roleIdx = 0, charIdx = 0, deleting = false;
+      function typeLoop(){
+        const current = typedRoles[roleIdx];
+        if(!deleting){
+          charIdx++;
+          typedEl.textContent = current.slice(0, charIdx);
+          if(charIdx === current.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+        } else {
+          charIdx--;
+          typedEl.textContent = current.slice(0, charIdx);
+          if(charIdx === 0){ deleting = false; roleIdx = (roleIdx+1) % typedRoles.length; }
+        }
+        setTimeout(typeLoop, deleting ? 35 : 65);
+      }
+      typeLoop();
+    }
+  }
+
+  // ================= ACTIVE NAV TAB ON SCROLL =================
+  const tabs = document.querySelectorAll('.diary-tab');
+  const dashLinks = document.querySelectorAll('.dash-link');
+  const pillItems = document.querySelectorAll('.pill-item');
+  const allSectionIds = ['hero','about','living','skills','stats','techstack','projects','portfolio','timeline','gallery','favorites','goals','contact','closing'];
+  const sections = allSectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const tabObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const id = entry.target.id;
+      if(entry.isIntersecting){
+        tabs.forEach(t=>t.classList.remove('active'));
+        dashLinks.forEach(l=>l.classList.remove('active'));
+        const tab = document.querySelector('.diary-tab[data-tab="'+id+'"]');
+        const link = document.querySelector('.dash-link[data-tab="'+id+'"]');
+        if(tab) tab.classList.add('active');
+        if(link) link.classList.add('active');
+        const pill = document.querySelector('.pill-item[data-tab="'+id+'"]');
+        if(pill){ pillItems.forEach(p=>p.classList.remove('active')); pill.classList.add('active'); }
+      }
+    });
+  }, { threshold:0.4, rootMargin:"-10% 0px -60% 0px" });
+  sections.forEach(sec => tabObserver.observe(sec));
+
+  pillItems.forEach(item=>{
+    item.addEventListener('click', ()=>{
+      pillItems.forEach(p=>p.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+
+  // ================= SCROLL PROGRESS BAR + BACK TO TOP =================
+  const progressFill = document.getElementById('progressFill');
+  const dashReadProgress = document.getElementById('dashReadProgress');
+  const backToTop = document.getElementById('backToTop');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+    progressFill.style.width = pct + '%';
+    if(dashReadProgress) dashReadProgress.textContent = Math.round(pct) + '%';
+    if(backToTop) backToTop.classList.toggle('show', scrollTop > 600);
+  }
+  window.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+  if(backToTop){
+    backToTop.addEventListener('click', ()=>{
+      window.scrollTo({ top:0, behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  }
+
+  // ================= DASHBOARD MENU OPEN/CLOSE =================
+  const dashToggle = document.getElementById('dashToggle');
+  const dashPanel = document.getElementById('dashPanel');
+  const dashOverlay = document.getElementById('dashOverlay');
+  const dashClose = document.getElementById('dashClose');
+  const dashIcon = document.getElementById('dashIcon');
+
+  function openDash(){
+    dashPanel.classList.add('open');
+    dashOverlay.classList.add('open');
+    dashToggle.classList.add('active');
+    dashPanel.setAttribute('aria-hidden','false');
+    dashToggle.setAttribute('aria-expanded','true');
+    dashIcon.textContent = '✕';
+    dashClose.focus();
+  }
+  function closeDash(){
+    dashPanel.classList.remove('open');
+    dashOverlay.classList.remove('open');
+    dashToggle.classList.remove('active');
+    dashPanel.setAttribute('aria-hidden','true');
+    dashToggle.setAttribute('aria-expanded','false');
+    dashIcon.textContent = '⌘';
+    dashToggle.focus();
+  }
+  dashToggle.addEventListener('click', ()=>{
+    dashPanel.classList.contains('open') ? closeDash() : openDash();
+  });
+  dashClose.addEventListener('click', closeDash);
+  dashOverlay.addEventListener('click', closeDash);
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && dashPanel.classList.contains('open')) closeDash();
+  });
+  dashLinks.forEach(link => link.addEventListener('click', closeDash));
+
+  // ================= THEME TOGGLE (DARK MODE) =================
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  function applyTheme(theme){
+    if(theme === 'dark'){
+      document.documentElement.setAttribute('data-theme','dark');
+      themeIcon.textContent = '☀️';
+      if(themeMeta) themeMeta.setAttribute('content', '#201D18');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeIcon.textContent = '🌙';
+      if(themeMeta) themeMeta.setAttribute('content', '#FAF6EF');
+    }
+  }
+  let savedTheme = 'light';
+  try{ savedTheme = localStorage.getItem('diaryTheme') || 'light'; }catch(e){}
+  if(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+    applyTheme('dark');
+  }
+  themeToggle.addEventListener('click', ()=>{
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    applyTheme(isDark ? 'light' : 'dark');
+    try{ localStorage.setItem('diaryTheme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+
+  // ================= LOADING SCREEN =================
+  const loadingScreen = document.getElementById('loadingScreen');
+  function hideLoading(){ loadingScreen.classList.add('done'); }
+  if(document.readyState === 'complete'){
+    setTimeout(hideLoading, 500);
+  } else {
+    window.addEventListener('load', ()=> setTimeout(hideLoading, 500));
+  }
+  setTimeout(hideLoading, 2500); // safety fallback
+
+  // ================= DOWNLOAD CV (print-to-PDF) =================
+  const downloadCvBtn = document.getElementById('downloadCvBtn');
+  if(downloadCvBtn){
+    downloadCvBtn.addEventListener('click', ()=> window.print());
+  }
+
+  // ================= CONTACT FORM (front-end demo submit) =================
+  const contactForm = document.getElementById('contactForm');
+  const cfStatus = document.getElementById('cfStatus');
+  const cfSubmit = document.getElementById('cfSubmit');
+  if(contactForm){
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!contactForm.checkValidity()){
+        cfStatus.textContent = 'Yuk lengkapi dulu semua kolomnya ya 🙏';
+        cfStatus.className = 'form-status error';
+        return;
+      }
+      cfSubmit.disabled = true;
+      cfSubmit.textContent = 'Mengirim...';
+      cfStatus.textContent = '';
+      setTimeout(()=>{
+        cfStatus.textContent = 'Pesan terkirim! Terima kasih sudah mampir, aku akan balas secepatnya 🌿';
+        cfStatus.className = 'form-status success';
+        cfSubmit.disabled = false;
+        cfSubmit.textContent = 'Kirim Pesan';
+        contactForm.reset();
+      }, 900);
+    });
+  }
+
+  // ================= AI COMPANION WIDGET =================
+  const aiToggle = document.getElementById('aiToggle');
+  const aiPanel = document.getElementById('aiPanel');
+  const aiClose = document.getElementById('aiClose');
+  const aiMessages = document.getElementById('aiMessages');
+  const aiInput = document.getElementById('aiInput');
+  const aiSend = document.getElementById('aiSend');
+
+  let aiHistory = [];
+  let aiOpen = false;
+
+  function toggleAiPanel(){
+    aiOpen = !aiOpen;
+    aiPanel.classList.toggle('open', aiOpen);
+    aiToggle.classList.toggle('active', aiOpen);
+    aiPanel.setAttribute('aria-hidden', String(!aiOpen));
+    aiToggle.setAttribute('aria-expanded', String(aiOpen));
+    if(aiOpen) setTimeout(()=> aiInput.focus(), 200);
+  }
+  aiToggle.addEventListener('click', toggleAiPanel);
+  aiClose.addEventListener('click', toggleAiPanel);
+
+  function addMsg(text, role){
+    const div = document.createElement('div');
+    div.className = 'ai-msg ' + role;
+    div.textContent = text;
+    aiMessages.appendChild(div);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+    return div;
+  }
+
+  function showTyping(){
+    const div = document.createElement('div');
+    div.className = 'ai-typing';
+    div.id = 'aiTypingIndicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    aiMessages.appendChild(div);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+  function hideTyping(){
+    const el = document.getElementById('aiTypingIndicator');
+    if(el) el.remove();
+  }
+
+  async function sendAiMessage(){
+    const text = aiInput.value.trim();
+    if(!text) return;
+    addMsg(text, 'user');
+    aiHistory.push({ role:'user', content:text });
+    aiInput.value = '';
+    aiSend.disabled = true;
+    showTyping();
+
+    try{
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify({
+          model:"claude-sonnet-4-6",
+          max_tokens:1000,
+          system:"Lo adalah teman deket yang tinggal di dalam diary digital anak muda namanya Danis Tri Yudha Tama, pelajar SMK yang lagi belajar coding & AI. Gaya ngomong lo: santai banget kayak chat sama sahabat sendiri, pake 'lo-gue' atau bahasa gaul sehari-hari, boleh sesekali bercanda / roasting receh / kasih emoji, ga usah sok formal atau kaku. Tetep suportif dan positif tapi bawainnya asik, bukan ceramah. Jawaban singkat aja, 2-4 kalimat, ngalir kayak obrolan beneran. Jangan pakai format markdown atau bullet point.",
+          messages: aiHistory
+        })
+      });
+
+      if(!response.ok){ throw new Error('status ' + response.status); }
+      const data = await response.json();
+      const replyText = (data.content || [])
+        .map(block => block.type === 'text' ? block.text : '')
+        .filter(Boolean)
+        .join('\n') || "Hmm, aku belum nemu kata-kata yang pas. Coba tanya lagi ya?";
+
+      hideTyping();
+      addMsg(replyText, 'assistant');
+      aiHistory.push({ role:'assistant', content:replyText });
+    }catch(err){
+      hideTyping();
+      addMsg("Waduh, koneksinya lagi ngambek nih 😅 Fitur ini emang cuma nyala kalau dibuka langsung di Claude.ai, coba refresh atau chat lagi ya.", 'error');
+      console.error('AI companion error:', err);
+    }finally{
+      aiSend.disabled = false;
+      aiInput.focus();
+    }
+  }
+
+  aiSend.addEventListener('click', sendAiMessage);
+  aiInput.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter') sendAiMessage();
+  });
+
+  // ================= BACKGROUND PARALLAX (generalized, lightweight) =================
+  if(!prefersReduced){
+    const parallaxEls = document.querySelectorAll('.hero .blob, [data-parallax]');
+    let ticking = false;
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{
+          const y = window.scrollY;
+          parallaxEls.forEach((el, i)=>{
+            const factor = el.dataset.parallax ? parseFloat(el.dataset.parallax) : (0.06 + i * 0.03);
+            el.style.transform = 'translateY(' + (y * factor) + 'px)';
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive:true });
+  }
+</script>
+
+</body>
+</html>
